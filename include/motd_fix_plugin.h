@@ -13,4 +13,8 @@ public:
         //Spoofing the port to avoid port mismatch with Proxy <--> Server
         event.setLocalPort(19132);
 	}
+
+    void onEnable() override {
+        getLogger().info("MOTD Fix Loaded And Spoofing For Port 19132");
+    }
 };
