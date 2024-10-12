@@ -6,18 +6,20 @@
 
 class MOTDFix : public endstone::Plugin {
 public:
+    void onEnable() override
+    {
+        registerEvent(&MOTDFix::onServerPingEvent, *this);
+        getLogger().info("MOTD Fix Loaded And Spoofing For Port 19132");
+    }
 
-	void onServerPingEvent(endstone::ServerListPingEvent& event) {
+    void onServerPingEvent(endstone::ServerListPingEvent &event)
+    {
         getLogger().debug("Ping Incomming: " + event.getRemoteHost());
-        
+
         event.setMotd("Origins, Factions, Economy And More");
         event.setLevelName("Tasty Factions");
 
-        //Spoofing the port to avoid port mismatch with Proxy <--> Server
+        // Spoofing the port to avoid port mismatch with Proxy <--> Server
         event.setLocalPort(19132);
-	}
-
-    void onEnable() override {
-        getLogger().info("MOTD Fix Loaded And Spoofing For Port 19132");
     }
 };
