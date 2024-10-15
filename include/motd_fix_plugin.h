@@ -14,12 +14,13 @@ public:
 
     void onServerPingEvent(endstone::ServerListPingEvent &event)
     {
-        getLogger().debug("Ping Incomming: " + event.getRemoteHost());
+        getLogger().warning("Ping Incomming: " + event.getRemoteHost());
 
-        event.setMotd("Origins, Factions, Economy And More");
+        event.setMotd("We Know What You Are Trying To Do.");
+        //event.setMotd("Origins, Factions, Economy And More");
         event.setLevelName("Tasty Factions");
 
         // Spoofing the port to avoid port mismatch with Proxy <--> Server
-        event.setLocalPort(19132);
+        //event.setLocalPort(19132);
     }
 };
